@@ -1,2 +1,2 @@
 # DevOps
-Public Repository for DevOps
+<b> Public Repository for Telerik UpSkill DevOps Course </b>
