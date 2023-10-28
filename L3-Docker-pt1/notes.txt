@@ -1,3 +1,14 @@
 Video Link:
 
 https://learn.telerikacademy.com/mod/page/view.php?id=57394
+
+Learning Objectives:
+
+By the end of this session, you will be able to:
+1 Understand high-level application architecture
+2 Know the microservice structure and details
+3 Manage dependencies
+4 Build CI/CD for microservices
+5 Understand microservice communication patterns
+6 Know how to use API Gateways
+
