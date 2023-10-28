@@ -1,4 +1,4 @@
-##### GitHub Repo for This Homework Solution #####
+##### Microservices-Docker-Part2 Homework Solution #####
 
 [ 1 Create an index.html file. ]
 
