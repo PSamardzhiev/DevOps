@@ -66,3 +66,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/dockerhw-nginx:v0.1
 
+
+To run the image locally:
+    docker run -d -p 80:80 --name test-container psamardzhiev/dockerhw-nginx:v0.1
