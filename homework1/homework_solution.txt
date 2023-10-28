@@ -1,7 +1,5 @@
 ##### GitHub Repo for This Homework Solution #####
 
-https://github.com/PSamardzhiev/DevOps_DockerHW.git
-
 [ 1 Create an index.html file. ]
 
 $cat index.html
@@ -31,6 +29,7 @@ EXPOSE 80
 
 GitHub Actions File:
 
+$ cat image-push.yml
 name: Publish Docker image
 
 on:
@@ -62,9 +61,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile
+          file: ./homework1/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/dockerhw-nginx:v0.1
-
 
