@@ -1,0 +1,28 @@
+[ 1 Create an index.html file. ]
+
+$cat index.html
+
+<html lang="us">
+<head>
+    <meta charset="UTF-8">
+    <title>Telerik DevOps Course 2023 </title>
+</head>
+<body>
+    <h1>Docker Part2 Homework</h1>
+    <p> PSamardzhiev</p>
+</body>
+</html>
+
+
+[ 2 Create a Dockerfile that is based on nginx:1.20-alpine ]
+
+FROM nginx:1.20-alpine
+COPY index.html /usr/share/nginx/html/index.html
+EXPOSE 80
+
+
+[ 3 Create a public image repository in docker hub ]
+
+	
+
+
