@@ -1,2 +1,28 @@
 ---
+- hosts: localhost
+  gather_facts: no
+  become: no
+
+  tasks:
+    - name: Create Code Directory
+      file:
+        dst: ~/temp/devops-ansible/code
+
+    - name: Get latest application code from GitHub
+      git:
+        repo: PSamardzhiev@github.com/Psamardzhiev
+          version: main
+          dst: ~/tmp/devops-ansible/code
+
+    - name: Install Python Libraries
+      pip:
+        chdir: code/
+        requirements: "requirements.txt"
+        state: present
+
+    - name: Start the Flask app
+      shell: "flash run -h 0.0.0.0 -p 5001 &"
+      args:
+        chdir: code/app
+
 
