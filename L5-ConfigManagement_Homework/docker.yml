@@ -28,11 +28,19 @@
       environment:
         GIT_SSH_COMMAND: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
+    - name: Copy Dockerfile
+      file:
+        src: "{{ ansible_env.HOME }}/{{ git_app_dir }}/L5-ConfigManagement_Homework/Dockerfile"
+        dest: /tmp/Dockerfile
+        owner: ps
+        group: root
+        mode: '0777'
+
     - name: Build image with arguments
       community.docker.docker_image:
         name: "{{ docker_image_name }}:{{ docker_image_tag }}"
         build:
-          path: "{{ ansible_env.HOME }}/{{ git_app_dir }}/L4-Docker-pt2/app"
+          path: "{{ ansible_env.HOME }}/{{ git_app_dir }}/L5-ConfigManagement_Homework/Dockerfile"
         source: build
 
     - name: 
