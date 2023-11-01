@@ -1,19 +1,14 @@
 FROM ubuntu:22.04
-
 RUN apt-get update \
-      && apt-get install -y --no-install-recommends \
-       python3 \
-       python3-pip \
-      && mkdir -p /app \
-      && useradd -d /app -s /bin/bash app \
-      && chown -R app:app /app
+        && apt-get install python3 python3-pip -y \
+         && mkdir /app/ \
+         && mkdir /req/
+ADD requirements.txt /req/
 
-COPY requirements.txt /app/requirements.txt
-RUN pip3 install -r /app/requirements.txt
-
-COPY app/app.py /app
-WORKDIR /app
-
-USER app
-
-CMD ["python3", "app.py"]
+WORKDIR /
+ADD app /app
+RUN pip install -r /req/requirements.txt
+ENV FLASK_ENV=DEVELOPMENT
+ENV FLASK_RUN_HOST=0.0.0.0
+EXPOSE 5000
+CMD ["python3","/app/app.py"]
