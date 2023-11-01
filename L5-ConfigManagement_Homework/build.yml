@@ -60,7 +60,7 @@
         ports: 
           - "{{ ports_map }}"
 
-    - name: Tag the compiled Docker Image
+    - name: Tag the compiled Docker Image and Push it to DockerHub Public Repo
       community.docker.docker_image:
         name: "{{ image_name }}"
         tag: "{{ image_tag }}"
