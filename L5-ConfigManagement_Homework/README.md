@@ -10,6 +10,12 @@ Source: https://github.com/vutoff/devops-programme/tree/main/M1-3-Ansible#readme
 <b> Please check build.yml in this folder for the complete homework solution source code </b>
 <br>
 </br>
-When executed Ansible will create a temporary build directory on the Linux host in /tmp/ \
-It will copy requirements.txt Dockerfile and app directory with all of its content to that temp directory \
-It will build the container iamge with the name and tag defined in the variables "{{ image_name }}:{{ image_tag }}" \
+<br>When executed Ansible will create a temporary build directory on the Linux host in /tmp/ </br>
+<br>It will copy requirements.txt Dockerfile and app directory with all of its content to that temp directory </br>
+<br>It will build the container image using copied Dockerfile in the buld directory with the name and tag defined in the variables 
+"{{ image_name }}:{{ image_tag }}" </br>
+<br> The container will be started with the name defined in {{ cnt_name }} </br>
+<br> The image build in the previous Ansible tasks will be pushed to DockerHub with {{ image_name }} and {{ image_tag }} </br>
+<br>Target Dockerhub Repository is: https://hub.docker.com/layers/psamardzhiev/docker-ansible-image/v0.1/images/sha256-63ebb69462eadfe3f1ae9307d90d52f2a11ef931beae9f9d9d8899d273621895?context=repo </br>
+
+
