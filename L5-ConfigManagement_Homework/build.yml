@@ -9,6 +9,7 @@
     ports_map: "5000:5000"
     build_dir: "/tmp/docker_build"
     cnt_name: "devops-ansible"
+    docker_repo: "psamardzhiev/docker-ansible-image"
 
 
   tasks:
@@ -51,9 +52,20 @@
           path: "{{ build_dir }}/"
         state: present
 
-    - name: Start the container
+    - name: Start the container based on that image
       community.docker.docker_container:
         name: "{{ cnt_name }}"
         image: "{{ image_name }}:{{ image_tag }}"
         state: started
-        ports: "{{ ports_map }}"
+        ports: 
+          - "{{ ports_map }}"
+
+    - name: Tag the compiled Docker Image
+      community.docker.docker_image:
+        name: "{{ image_name }}"
+        tag: "{{ image_tag }}"
+        repository: "{{ docker_repo }}"
+        push: true
+        source: local
+
+      
