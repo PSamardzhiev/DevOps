@@ -1,0 +1,44 @@
+---
+- name: Buld Docker Container and Push it to DockerHub
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: create build directory
+      file:
+        path: /tmp/docker_build
+        state: directory
+        owner: ps
+        group: ps
+        mode: '0777'
+    - name: copy Dockerfile
+      copy:
+        src: ./Dockerfile
+        dest: /tmp/docker_build/Dockerfile
+        owner: ps
+        group: ps
+        mode: '0777'
+
+    - name: copy Container Requirements
+      copy:
+        src: ./requirements.txt
+        dest: /tmp/docker_build/requirements.txt
+        owner: ps
+        group: ps
+        mode: '0777'
+
+    - name: copy Container Requirements
+      copy:
+        src: ./app
+        dest: /tmp/docker_build/
+        owner: ps
+        group: ps
+        mode: '0777'
+
+    - name: build container image
+      community.docker.docker_image:
+        name: democontainer:v1.0
+        source: build
+        build:
+          path: /tmp/docker_build/
+        state: present
