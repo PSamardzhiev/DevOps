@@ -3,6 +3,14 @@
   hosts: localhost
   gather_facts: no
 
+  vars:
+    image_name: "psamardzhiev/docker-ansible-image"
+    image_tag: "v0.1"
+    listen_port: "5000"
+    build_dir: "/tmp/docker_build"
+    cnt_name: "devops-ansible"
+
+
   tasks:
     - name: create build directory
       file:
@@ -14,7 +22,7 @@
     - name: copy Dockerfile
       copy:
         src: ./Dockerfile
-        dest: /tmp/docker_build/Dockerfile
+        dest: "{{ build_dir }}/Dockerfile"
         owner: ps
         group: ps
         mode: '0777'
@@ -22,7 +30,7 @@
     - name: copy Container Requirements
       copy:
         src: ./requirements.txt
-        dest: /tmp/docker_build/requirements.txt
+        dest: "{{ build_dir }}/requirements.txt"
         owner: ps
         group: ps
         mode: '0777'
@@ -30,15 +38,23 @@
     - name: copy Container Requirements
       copy:
         src: ./app
-        dest: /tmp/docker_build/
+        dest: "{{ build_dir }}/"
         owner: ps
         group: ps
         mode: '0777'
 
     - name: build container image
       community.docker.docker_image:
-        name: democontainer:v1.0
+        name: "{{ image_name }}:{{ image_tag }}"
         source: build
         build:
-          path: /tmp/docker_build/
+          path: "{{ build_dir }}/"
         state: present
+
+    - name: Start the container
+      community.docker.docker_container:
+        name: "{{ cnt_name }}"
+        image: "{{ image_name }}:{{ image_tag }}"
+        state: started
+        ports:
+          - "5000:5000"
