@@ -6,8 +6,12 @@ Source: https://github.com/vutoff/devops-programme/tree/main/M1-3-Ansible#readme
 <br>
 </br>
 <h4> Homework Solution </h4>
-<br>
 <b> Please check build.yml in this folder for the complete homework solution source code </b>
+<br> For demo: clone the repository (git clone https://github.com/PSamardzhiev/DevOps.git)</br>
+<br> Navigate to <path>/L5-ConfigManagement_Homework </br>
+<br> Execute: ansible-playbook build.yml </br>
+<br><b> You need Ansilbe and Docker installed on your box in order for the automated deployment to be successful</b></br>
+<br>
 <br>
 </br>
 <br>When executed Ansible will create a temporary build directory on the Linux host in /tmp/ </br>
