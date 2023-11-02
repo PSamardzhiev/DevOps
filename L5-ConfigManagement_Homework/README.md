@@ -10,8 +10,8 @@ Source: https://github.com/vutoff/devops-programme/tree/main/M1-3-Ansible#readme
 <br> For demo: clone the repository (git clone https://github.com/PSamardzhiev/DevOps.git)</br>
 <br> Navigate to <path>/L5-ConfigManagement_Homework </br>
 <br> Execute: ansible-playbook build.yml </br>
-<br><b> You need Ansilbe and Docker installed on your box in order for the automated deployment to be successful</b></br>
-<br>To test the container from a linux terminal: curl localhost:5000 or from Windows box: powershell -> Invoke-RestMethod http://localhost:5000 </br>
+<br><b> ! You need Ansilbe and Docker installed on your box in order for the automated deployment to be successful !</b></br>
+<br>To test the container from a linux terminal: curl localhost:5000 or from Windows box: open powershell -> Invoke-RestMethod http://localhost:5000 </br>
 <br>
 </br>
 <br>When executed Ansible will create a temporary build directory on the Linux host in /tmp/ </br>
