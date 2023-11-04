@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./L4-Docker-pt2-Homework/Dockerfile
+          file: ./HWL4-Docker/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/dockerhw-nginx:v0.1
