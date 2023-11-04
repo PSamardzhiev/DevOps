@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 - name: Clone PSamardzhiev Repository, Build Docker Image and upload it to DockerHub
+=======
+- name: Clone PSamardzhiev Repository Build Docker Image and upload it to DockerHub
+>>>>>>> main
   hosts: localhost
   gather_facts: no
 
