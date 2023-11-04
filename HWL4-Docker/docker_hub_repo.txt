@@ -1,0 +1,4 @@
+to pull the dockerhub image and test locally:
+	
+	docker pull psamardzhiev/dockerhw-nginx:v0.1
+
