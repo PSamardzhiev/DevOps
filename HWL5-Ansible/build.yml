@@ -1,11 +1,11 @@
 ---
-- name: Clone PSamardzhiev Repository Build Docker Image and upload it to DockerHub
+- name: Clones PSamardzhiev repo, Builds an Docker Image and upload it to DockerHub
   hosts: localhost
   gather_facts: no
 
   vars:
     image_name: "ansible-img"
-    image_tag: "v0.3"
+    image_tag: "v0.2"
     ports_map: "5000:5000"
     build_dir: "/tmp/docker_build"
     cnt_name: "devops-ansible"
@@ -13,7 +13,7 @@
     git_repo: "https://github.com/PSamardzhiev/devops-programme.git"
 
   tasks:
-    - name: Create buld directory
+    - name: Creates build directory
       file:
         path: /tmp/docker_build
         state: directory
