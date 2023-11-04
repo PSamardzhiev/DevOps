@@ -1,15 +1,19 @@
 ---
 <<<<<<< HEAD
+<<<<<<< HEAD
 - name: Clone PSamardzhiev Repository, Build Docker Image and upload it to DockerHub
 =======
 - name: Clone PSamardzhiev Repository Build Docker Image and upload it to DockerHub
 >>>>>>> main
+=======
+- name: Clone PSamardzhiev repo, Builds an Docker Image and upload it to DockerHub
+>>>>>>> HWL5-Ansible
   hosts: localhost
   gather_facts: no
 
   vars:
     image_name: "ansible-img"
-    image_tag: "v0.3"
+    image_tag: "v0.2"
     ports_map: "5000:5000"
     build_dir: "/tmp/docker_build"
     cnt_name: "devops-ansible"
