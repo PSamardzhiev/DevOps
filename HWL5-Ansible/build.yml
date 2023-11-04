@@ -1,5 +1,5 @@
 ---
-- name: Clone PSamardzhiev repo, Builds an Docker Image and upload it to DockerHub
+- name: Clones PSamardzhiev repo, Builds an Docker Image and upload it to DockerHub
   hosts: localhost
   gather_facts: no
 
