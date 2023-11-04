@@ -1,0 +1,20 @@
+[Install Docker]
+	
+To install docker on Debian Server, we need to execute the following commands:
+	sudo apt-get update
+	sudo apt-get upgrade
+	sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+[Create DockerHub account]
+
+	The account can be created here: https://hub.docker.com/signup
+	Username: petko9001@gmail.com
+	password: ...................
+
+[Do the Demo content in https://github.com/severel/telerik-devops-course/]
+
+Verify that your docker engine installed in the first task works:
+	type in the terminal: sudo systemctl status docker
+
+On the Ubuntu Server type git clone https://github.com/severel/telerik-devops-course/
+Navigate to the folder where the clone of the repository is located and execute the tasks 1 by 1	

@@ -1,0 +1,75 @@
+---
+- name: Buld Docker Container and Push it to DockerHub
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    image_name: "ansible-img"
+    image_tag: "v0.2"
+    ports_map: "5000:5000"
+    build_dir: "/tmp/docker_build"
+    cnt_name: "devops-ansible"
+    docker_repo: "psamardzhiev/docker-ansible-image"
+
+
+  tasks:
+    - name: create build directory
+      file:
+        path: /tmp/docker_build
+        state: directory
+        owner: ps
+        group: ps
+        mode: '0777'
+    - name: copy Dockerfile into the Build Directory
+      copy:
+        src: ./Dockerfile
+        dest: "{{ build_dir }}/Dockerfile"
+        owner: ps
+        group: ps
+        mode: '0777'
+
+    - name: copy Container Requirements
+      copy:
+        src: ./requirements.txt
+        dest: "{{ build_dir }}/requirements.txt"
+        owner: ps
+        group: ps
+        mode: '0777'
+
+    - name: copy Flask APP directory
+      copy:
+        src: ./app
+        dest: "{{ build_dir }}/"
+        owner: ps
+        group: ps
+        mode: '0777'
+
+    - name: build container image
+      community.docker.docker_image:
+        name: "{{ image_name }}:{{ image_tag }}"
+        source: build
+        build:
+          path: "{{ build_dir }}/"
+        state: present
+
+    - name: Start the container based on that image
+      community.docker.docker_container:
+        name: "{{ cnt_name }}"
+        image: "{{ image_name }}:{{ image_tag }}"
+        state: started
+        ports: 
+          - "{{ ports_map }}"
+
+    - name: Tag the compiled Docker Image with v0.2 tag and push it to DockerHub Public Repo
+      community.docker.docker_image:
+        name: "{{ image_name }}"
+        tag: "{{ image_tag }}"
+        repository: "{{ docker_repo }}"
+        push: true
+        source: local
+
+    - name: Cleans up the Docker Build Temp Directory
+      ansible.builtin.file:
+        state: absent
+        path: "{{ build_dir }}"
+      
