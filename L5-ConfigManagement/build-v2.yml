@@ -1,5 +1,5 @@
 ---
-- name: Clone PSamardzhiev Repository Build Docker Image and upload it to DockerHub
+- name: Clone Vutoff Repository Build Docker Image and upload it to DockerHub
   hosts: localhost
   gather_facts: no
 
@@ -10,7 +10,6 @@
     build_dir: "/tmp/docker_build"
     cnt_name: "devops-ansible"
     docker_repo: "psamardzhiev/docker-ansible-image"
-    git_repo: "https://github.com/PSamardzhiev/devops-programme.git"
 
   tasks:
     - name: Create buld directory
@@ -19,9 +18,9 @@
         state: directory
         mode: '0777'
 
-    - name: Clone PSamardzhiev GitHub repo into the Build Directory
+    - name: Clone Vutoff github repo into the Build Directory
       ansible.builtin.git:
-        repo: "{{ git_repo }}"
+        repo: https://github.com/vutoff/devops-programme.git
         dest: "{{ build_dir }}"
         clone: yes
 
@@ -41,7 +40,7 @@
         ports:
           - "{{ ports_map }}"
 
-    - name: Tag the compiled Docker Image with v0.2 tag and Push it to DockerHub Public Repo
+    - name: Tag the compiled Docker Image with v0.3 tag and Push it to DockerHub Public Repo
       community.docker.docker_image:
         name: "{{ image_name }}"
         tag: "{{ image_tag }}"
