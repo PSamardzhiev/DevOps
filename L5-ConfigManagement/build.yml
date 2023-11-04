@@ -4,7 +4,7 @@
   gather_facts: no
 
   vars:
-    image_name: "ansible-img"
+    image_name: "psamardzhiev/docker-ansible-image"
     image_tag: "v0.2"
     ports_map: "5000:5000"
     build_dir: "/tmp/docker_build"
