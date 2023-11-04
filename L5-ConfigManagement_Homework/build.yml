@@ -5,7 +5,7 @@
 
   vars:
     image_name: "psamardzhiev/docker-ansible-image"
-    image_tag: "v0.1"
+    image_tag: "v0.2"
     ports_map: "5000:5000"
     build_dir: "/tmp/docker_build"
     cnt_name: "devops-ansible"
@@ -20,7 +20,7 @@
         owner: ps
         group: ps
         mode: '0777'
-    - name: copy Dockerfile
+    - name: copy Dockerfile into the Build Directory
       copy:
         src: ./Dockerfile
         dest: "{{ build_dir }}/Dockerfile"
@@ -36,7 +36,7 @@
         group: ps
         mode: '0777'
 
-    - name: copy Container Requirements
+    - name: copy Flask APP directory
       copy:
         src: ./app
         dest: "{{ build_dir }}/"
