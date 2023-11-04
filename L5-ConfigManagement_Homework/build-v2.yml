@@ -4,8 +4,8 @@
   gather_facts: no
 
   vars:
-    image_name: "psamardzhiev/docker-ansible-image"
-    image_tag: "v0.2"
+    image_name: "ansible-img"
+    image_tag: "v0.3"
     ports_map: "5000:5000"
     build_dir: "/tmp/docker_build"
     cnt_name: "devops-ansible"
@@ -40,7 +40,7 @@
         ports:
           - "{{ ports_map }}"
 
-    - name: Tag the compiled Docker Image and Push it to DockerHub Public Repo
+    - name: Tag the compiled Docker Image with v0.3 tag and Push it to DockerHub Public Repo
       community.docker.docker_image:
         name: "{{ image_name }}"
         tag: "{{ image_tag }}"
@@ -48,3 +48,7 @@
         push: true
         source: local
 
+    - name: Cleans up the Docker Build Temp Directory
+      ansible.builtin.file:
+        state: absent
+        path: "{{ build_dir }}"

@@ -8,8 +8,10 @@ Source: https://github.com/vutoff/devops-programme/tree/main/M1-3-Ansible#readme
 <h4> Homework Solution - using build.yml </h4>
 <b> Please check build.yml in this folder for the complete homework solution source code </b>
 <br> For demo: clone the repository (git clone https://github.com/PSamardzhiev/DevOps.git)</br>
+
 <br> Navigate to <path>/L5-ConfigManagement_Homework </br>
 <br> Execute: ansible-playbook build.yml </br>
+
 <br><b> ! You need Ansilbe and Docker installed on your box in order for the automated deployment to be successful !</b></br>
 <br>To test the container from a linux terminal: curl localhost:5000 or from Windows box: open powershell -> Invoke-RestMethod http://localhost:5000 </br>
 <br>
@@ -22,11 +24,17 @@ Source: https://github.com/vutoff/devops-programme/tree/main/M1-3-Ansible#readme
 <br> The image build in the previous Ansible tasks will be pushed to DockerHub with {{ image_name }} and {{ image_tag }} </br>
 <br>Target Dockerhub Repository is: https://hub.docker.com/layers/psamardzhiev/docker-ansible-image/v0.1/images/sha256-63ebb69462eadfe3f1ae9307d90d52f2a11ef931beae9f9d9d8899d273621895?context=repo </br>
 
-<br><b> To Pull the Docker Image Directly from the above mentioned Repo: docker pull psamardzhiev/docker-ansible-image:v0.1 </b></br>
-<hr> --- </hr>
+<br> The image is for this version of the homework is with tag v0.2 </br>
+
+<br><b> To Pull the Docker Image Directly from the above mentioned Repo: docker pull psamardzhiev/docker-ansible-image:v0.2 </b></br>
+<hr></hr>
 <h4><b>Homework Solution - using build-v2.yml</b></h4>
-<br>build-v2.yml clones the https://github.com/vutoff/devops-programme.git to a directory at /tmp/docker_build and then builds, tags and uploads the container created based on the files from that repo</br>
+<b> Please check build-v2.yml in this folder for the complete homework solution source code </b>
 
-<br>For this version of the implementation again the target Dockerhub Repository is: https://hub.docker.com/layers/psamardzhiev/docker-ansible-image/v0.1/images/sha256-63ebb69462eadfe3f1ae9307d90d52f2a11ef931beae9f9d9d8899d273621895?context=repo </br>
+<br>build-v2.yml clones the https://github.com/vutoff/devops-programme.git to a directory at /tmp/docker_build and then builds the docker image based on the Dockerfile from the repo. The image is then used for local container creation, after the container is created, the image gets tagged and pushed to Docker Hub Public Repo, with tag v0.3
+</br>
 
+<br>For this version of the homework implementation again the target Dockerhub Repository is: https://hub.docker.com/layers/psamardzhiev/docker-ansible-image/v0.1/images/sha256-63ebb69462eadfe3f1ae9307d90d52f2a11ef931beae9f9d9d8899d273621895?context=repo </br>
+
+<br><b> To Pull the Docker Image Directly from the above mentioned Repo for this version use: docker pull psamardzhiev/docker-ansible-image:v0.3 </b></br>
 
