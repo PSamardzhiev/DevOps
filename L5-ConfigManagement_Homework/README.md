@@ -5,7 +5,7 @@
 Source: https://github.com/vutoff/devops-programme/tree/main/M1-3-Ansible#readme
 <br>
 </br>
-<h4> Homework Solution </h4>
+<h4> Homework Solution - using build.yml </h4>
 <b> Please check build.yml in this folder for the complete homework solution source code </b>
 <br> For demo: clone the repository (git clone https://github.com/PSamardzhiev/DevOps.git)</br>
 <br> Navigate to <path>/L5-ConfigManagement_Homework </br>
@@ -24,3 +24,5 @@ Source: https://github.com/vutoff/devops-programme/tree/main/M1-3-Ansible#readme
 
 <br><b> To Pull the Docker Image Directly from the above mentioned Repo: docker pull psamardzhiev/docker-ansible-image:v0.1 </b></br>
 
+<h4> Homework Solution - using build-v2.yml </h4>
+<br>build-v2.yml clones the https://github.com/vutoff/devops-programme.git to a /tmp/docker_build and builds, tags and uploads the container created based on the files from that repo</br>
