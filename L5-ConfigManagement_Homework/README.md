@@ -23,6 +23,10 @@ Source: https://github.com/vutoff/devops-programme/tree/main/M1-3-Ansible#readme
 <br>Target Dockerhub Repository is: https://hub.docker.com/layers/psamardzhiev/docker-ansible-image/v0.1/images/sha256-63ebb69462eadfe3f1ae9307d90d52f2a11ef931beae9f9d9d8899d273621895?context=repo </br>
 
 <br><b> To Pull the Docker Image Directly from the above mentioned Repo: docker pull psamardzhiev/docker-ansible-image:v0.1 </b></br>
+<hr> --- </hr>
+<h4><b>Homework Solution - using build-v2.yml</b></h4>
+<br>build-v2.yml clones the https://github.com/vutoff/devops-programme.git to a directory at /tmp/docker_build and then builds, tags and uploads the container created based on the files from that repo</br>
 
-<h4> Homework Solution - using build-v2.yml </h4>
-<br>build-v2.yml clones the https://github.com/vutoff/devops-programme.git to a /tmp/docker_build and builds, tags and uploads the container created based on the files from that repo</br>
+<br>For this version of the implementation again the target Dockerhub Repository is: https://hub.docker.com/layers/psamardzhiev/docker-ansible-image/v0.1/images/sha256-63ebb69462eadfe3f1ae9307d90d52f2a11ef931beae9f9d9d8899d273621895?context=repo </br>
+
+
