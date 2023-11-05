@@ -37,7 +37,7 @@
         source: build
         state: present
 
-    - name: Spin-up container based on build image
+    - name: Spin-up container based on the build image
       community.docker.docker_container:
         name: "{{ cnt_name }}"
         image: "{{ image_name }}:{{ image_tag }}"
