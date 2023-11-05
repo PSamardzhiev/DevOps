@@ -1,5 +1,5 @@
 ---
-- name: Clone PSamardzhiev repo, build and run docker container and push the image to DockerHub
+- name: Clone PSamardzhiev repo, build and run docker container, tag and push the image to DockerHub
   hosts: localhost
   gather_facts: no
 
@@ -13,22 +13,21 @@
     git_repo: "https://github.com/PSamardzhiev/devops-programme.git"
 
   tasks:
-    - name: Creates build directory
+    - name: Create temp build directory
       file:
         path: /tmp/docker_build
         state: directory
         mode: '0777'
 
-    - name: Clone PSamardzhiev GitHub repo into the Build Directory
+    - name: Clone PSamardzhiev GitHub repo to build directory
       ansible.builtin.git:
         repo: "{{ git_repo }}"
         dest: "{{ build_dir }}"
         clone: yes
 
-    - name: Build and push the image
+    - name: Build, tag and push the image to Dockerhub
       community.docker.docker_image:
         name: "{{ image_name }}:{{ image_tag }}"
-        source: build
         build:
           path: "{{ build_dir }}/"
         name: "{{ image_name }}"
@@ -38,7 +37,7 @@
         source: build
         state: present
 
-    - name: Start container based on the image built from the previous task
+    - name: Spin-up container based on build image
       community.docker.docker_container:
         name: "{{ cnt_name }}"
         image: "{{ image_name }}:{{ image_tag }}"
