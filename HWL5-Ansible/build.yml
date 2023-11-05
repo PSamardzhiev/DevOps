@@ -37,11 +37,7 @@
         source: build
         state: present
 
-<<<<<<< HEAD
-    - name: Starts container based on the image built from the previous task
-=======
     - name: Spin-up container based on build image
->>>>>>> main
       community.docker.docker_container:
         name: "{{ cnt_name }}"
         image: "{{ image_name }}:{{ image_tag }}"
