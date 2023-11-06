@@ -1,0 +1,11 @@
+- hosts: localhost
+  gather_facts: no
+  become: no
+ 
+  vars:
+    username: "{{lookup('hashi_vault', 'secrets/data/dev:username') }}"
+    password: "{{lookup('hashi_vault', 'secrets/data/dev:password') }}"
+ 
+  tasks:
+  - debug: msg={{ password }}
+  - debug: msg={{ username }}
