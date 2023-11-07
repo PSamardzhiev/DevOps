@@ -10,5 +10,5 @@
 
   tasks:
 
-    - debug: msg={{ password }}
-    - debug: msg={{ username }}
+  - debug: msg={{ password }}
+  - debug: msg={{ username }}
