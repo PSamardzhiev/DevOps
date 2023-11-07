@@ -1,11 +1,14 @@
-- hosts: localhost
+---
+- name: Gather HashiCorp vault secrets using debug
+  hosts: localhost
   gather_facts: no
-  become: no
+  become: true
  
   vars:
     username: "{{lookup('hashi_vault', 'secrets/data/dev:username') }}"
     password: "{{lookup('hashi_vault', 'secrets/data/dev:password') }}"
- 
+
   tasks:
-  - debug: msg={{ password }}
-  - debug: msg={{ username }}
+
+    - debug: msg={{ password }}
+    - debug: msg={{ username }}
