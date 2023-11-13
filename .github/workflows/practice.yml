@@ -40,3 +40,7 @@ jobs:
           files: './L8-Practice/*.md'
           ignore: node_modules
           version: 0.28.1
+
+      - name: Execute unit-test
+          run: |
+          python -m unittest './L4-Docker-pt2/app/app_test.py'
