@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        python-version: ["3.11"]
+        python-version: ["3.X"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -22,9 +22,9 @@ jobs:
       
       - name: Install dependencies
         run: |
-          sudo apt-get install python3
-          python3 -m pip3 install --upgrade pip3
+          python -m pip install --upgrade pip
           pip install pylint
+          pip install black
           pip install -r './L4-Docker-pt2/requirements.txt'
       
       - name: Run EditorConfig Checker
