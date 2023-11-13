@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        python-version: latest
+        python-version: "latest"
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
