@@ -24,6 +24,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pylint
+          pip install -r './L4-Docker-pt2/requirements.txt'
       
       - name: Run EditorConfig Checker
         uses: editorconfig-checker/action-editorconfig-checker@main
