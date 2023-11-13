@@ -32,3 +32,13 @@ jobs:
         run: |
           pylint $(git ls-files './L4-Docker-pt2/app')
 
+      - name: markdownlint-cli
+        uses: nosborn/github-action-markdown-cli@v3.3.0
+        with:
+          files: .
+          config_file: .markdownlint.yaml
+          dot: true
+          ignore_files: examples/ignore/*
+          ignore_path: examples/.markdownlintignore
+          rules: examples/rules/custom.js
+
