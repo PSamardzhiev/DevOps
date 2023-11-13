@@ -45,3 +45,9 @@ jobs:
         run: |
           cd './L4-Docker-pt2/app/'
           python -m unittest app_test.py
+
+      - name: Perform gitleaks
+        uses: zricethezav/gitleaks-action@v2
+        with:
+          args: --path .
+
