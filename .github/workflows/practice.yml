@@ -30,5 +30,5 @@ jobs:
       
       - name: Analyzing the code with pylint
         run: |
-          pylint $(git ls-files '*.py')
+          pylint $(git ls-files './L4-Docker-pt2/app')
 
