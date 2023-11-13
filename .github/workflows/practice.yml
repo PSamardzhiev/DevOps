@@ -43,4 +43,5 @@ jobs:
 
       - name: Execute unit-test
         run: |
-          python -m unittest './L4-Docker-pt2/app/app_test.py'
+          cd ./L4-Docker-pt2/app/
+          python -m unittest
