@@ -85,12 +85,12 @@ jobs:
       - name: Build and export to Docker
         uses: docker/build-push-action@v2
         with:
-          context: ./HWL4-Docker  # Adjust the context to your project structure
+          context: ./HWL4-Docker
           file: ./HWL4-Docker/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}  # Fix typo here
+          tags: tags: ${{ secrets.DOCKER_USERNAME }}/github-actions:${{ github.sha }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Scan image
         uses: aquasecurity/trivy-action@master
