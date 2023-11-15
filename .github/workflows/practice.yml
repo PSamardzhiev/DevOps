@@ -81,7 +81,7 @@ jobs:
         uses: docker/build-push-action@v5
         id: build
         with:
-          context: .
+          context: /L4-Docker-pt2/
           load: true
 
       - name: Scan image
