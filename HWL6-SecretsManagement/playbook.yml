@@ -5,7 +5,7 @@
 
   vars:
     image_name: "ansible-img"
-    image_tag: "v0.2"
+    image_tag: "v0.3"
     ports_map: "5000:5000"
     build_dir: "/tmp/docker_build"
     cnt_name: "devops-ansible"
@@ -25,6 +25,18 @@
         dest: "{{ build_dir }}"
         clone: yes
 
+    - name: Load DockerHub credentials from vault
+      include_vars:
+        file: vault.yml
+        name: dockerhub_creds
+
+    - name: Login to DockerHub using credentials from vault
+      community.docker.docker_login:
+        username: "{{ dockerhub_creds.dockerhub_username }}"
+        password: "{{ dockerhub_creds.dockerhub_password }}"
+      no_log: yes
+      register: docker_login_result
+
     - name: Build, tag and push the image to Dockerhub
       community.docker.docker_image:
         name: "{{ image_name }}:{{ image_tag }}"
@@ -36,6 +48,10 @@
         push: true
         source: build
         state: present
+
+    - name: Log-out from Dockerhub
+      community.docker.docker_login:
+        state: absent
 
     - name: Spin-up container based on the build image
       community.docker.docker_container:
