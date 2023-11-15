@@ -45,14 +45,16 @@ jobs:
         run: |
           cd './L4-Docker-pt2/app/'
           python -m unittest app_test.py
+  
+  git-leaks:
+    name: gitleaks
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: gitleaks/gitleaks-action@v2
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  git-leaks: 
-    name: Git Leaks Repo Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: zricethezav/gitleaks-action@v2
-      - with:
-          args: --path .
 
   code-smells:
     name: SAST test
