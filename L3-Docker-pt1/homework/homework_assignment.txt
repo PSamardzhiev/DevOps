@@ -1,5 +1,0 @@
-Install docker
-
-Create DockerHub account
-
-Do the Demo content in https://github.com/severel/telerik-devops-course/
