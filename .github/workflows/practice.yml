@@ -46,10 +46,13 @@ jobs:
           cd './L4-Docker-pt2/app/'
           python -m unittest app_test.py
 
-      - name: Perform gitleaks
-        uses: zricethezav/gitleaks-action@v2
-        with:
-          args: --path .
+  git-leaks: 
+    name: Git Leaks Repo Test
+      runs-on: ubuntu-latest
+      steps:
+        - uses: zricethezav/gitleaks-action@v2
+          - with:
+            args: --path .
 
   code-smells:
     name: SAST test
