@@ -3,7 +3,7 @@ name: Practice
 on:
   push:
     branches:
-      - HWL7-Practice
+      - HWL7-CIPipelines
 
 jobs:
   editorconfig:
