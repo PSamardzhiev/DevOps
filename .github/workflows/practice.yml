@@ -48,11 +48,11 @@ jobs:
 
   git-leaks: 
     name: Git Leaks Repo Test
-      runs-on: ubuntu-latest
-      steps:
-        - uses: zricethezav/gitleaks-action@v2
-          - with:
-            args: --path .
+    runs-on: ubuntu-latest
+    steps:
+      - uses: zricethezav/gitleaks-action@v2
+      - with:
+        args: --path .
 
   code-smells:
     name: SAST test
