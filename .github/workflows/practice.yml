@@ -14,22 +14,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
-      
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pylint
           pip install black
           pip install -r './L4-Docker-pt2/requirements.txt'
-      
+
       - name: Run EditorConfig Checker
         uses: editorconfig-checker/action-editorconfig-checker@main
-      
+
       - name: Analyzing the code with pylint
         run: |
           pylint --rcfile='./L4-Docker-pt2/pylintrc' $(git ls-files './L4-Docker-pt2/app')
@@ -45,7 +45,7 @@ jobs:
         run: |
           cd './L4-Docker-pt2/app/'
           python -m unittest app_test.py
-  
+
   git-leaks:
     name: gitleaks
     runs-on: ubuntu-latest
@@ -54,7 +54,6 @@ jobs:
       - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 
   code-smells:
     name: SAST test
@@ -65,12 +64,11 @@ jobs:
         with:
           type: "python"
 
-
   build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Login to Dockerhub
         uses: docker/login-action@v1
@@ -87,12 +85,12 @@ jobs:
       - name: Build and export to Docker
         uses: docker/build-push-action@v2
         with:
-          context: /
+          context: ./HWL4-Docker  # Adjust the context to your project structure
           file: ./HWL4-Docker/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outpus.labels }}
+          labels: ${{ steps.meta.outputs.labels }}  # Fix typo here
 
       - name: Scan image
         uses: aquasecurity/trivy-action@master
@@ -102,4 +100,5 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
-          severity: 'CRITICAL'  
+          severity: 'CRITICAL'
+
