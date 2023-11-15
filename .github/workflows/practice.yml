@@ -51,3 +51,11 @@ jobs:
         with:
           args: --path .
 
+  code-smells:
+    name: SAST test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: AppThreat/sast-scan-action@master
+        with:
+          type: "python"
