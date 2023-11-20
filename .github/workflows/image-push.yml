@@ -1,18 +1,8 @@
-<<<<<<< HEAD
-name: CI/CD Pipeline
-
-on: [push]
-branches:
-    - clean-repo
-
-=======
 name: CICD Pipeline
-
 on:
   push:
     branches: ['clean-repo']
 
->>>>>>> clean-repo
 jobs:
   # Editorconfig Check
   editorconfig:
