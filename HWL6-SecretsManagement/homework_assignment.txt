@@ -1,1 +1,0 @@
-Create an Ansible vault. Store credentials to your Docker hub in that vault. Update the playbook you've created last time to use those credentials to login to your DockerHUB account to publish the built image. Open a PR and submit a link to ti. Remember - !!!do not publish your Ansible Vault password.!!!
