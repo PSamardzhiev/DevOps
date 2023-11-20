@@ -1,9 +1,8 @@
 name: CICD Pipeline
 
-  on:
-    push:
-      branches:
-        - 'clean-repo'
+on:
+  push:
+    branches: ['clean-repo']
 
 jobs:
   # Editorconfig Check
