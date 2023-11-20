@@ -1,4 +1,4 @@
-- name: Clone PSamardzhiev repo, build and run docker container, tag and push the image to DockerHub
+- name: Buld, Tag and Push Docker image to Hub
   hosts: localhost
   gather_facts: no
 
