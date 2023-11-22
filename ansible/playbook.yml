@@ -61,7 +61,7 @@
       community.docker.docker_login:
         state: absent
 
-    - name: Spin-up container based on the build image
+    - name: Spin-up container based on the built image
       community.docker.docker_container:
         name: "{{ cnt_name }}"
         image: "{{ image_name }}:{{ image_tag }}"
