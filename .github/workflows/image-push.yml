@@ -35,7 +35,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pylint
           pip install black
-          pip install -r './app/irequirements.txt'
+          pip install -r './app/requirements.txt'
       - name: Check Markdown files
         uses: github/super-linter@v4
         env:
