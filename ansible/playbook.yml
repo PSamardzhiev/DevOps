@@ -34,12 +34,12 @@
         - { src: "../app", dest: "" }
 
     - name: Load DockerHub credentials from vault
-      include_vars:
+      ansible.builtin.include_vars:
         file: vault.yml
         name: dockerhub_creds
 
     - name: Login to DockerHub using credentials from vault
-      community.docker.docker_login:
+      community.general.docker_login:
         username: "{{ dockerhub_creds.dockerhub_username }}"
         password: "{{ dockerhub_creds.dockerhub_password }}"
       no_log: yes

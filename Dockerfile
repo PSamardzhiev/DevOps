@@ -8,10 +8,11 @@ RUN apt-get update \
   && useradd -d /app -s /bin/bash app \
   && chown -R app:app /app
 
-COPY requirements.txt /app/requirements.txt
-RUN pip3 install -r /app/requirements.txt
+WORKDIR .
+COPY ./app/requirements.txt /app/requirements.txt
+RUN pip3 install -r ./app/requirements.txt
 
-COPY app/app.py /app
+COPY ./app/app.py /app
 WORKDIR /app
 
 USER app
